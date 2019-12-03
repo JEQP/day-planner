@@ -26,14 +26,26 @@ body {
   }
   
   .time-block{
-    text-align: center;
+    text-align: left;
     border-radius: 15px;
+    padding-left: 25px;
+    padding-top: 20px;
+    width: 80%;
+    height: 78px;
+    font-kerning: auto;
+    font-size: xx-large;
   }
   
   .row {
     white-space: pre-wrap;
     height: 80px;
     border-top: 1px solid white;;
+  }
+
+  .save-icon{
+    height: 60px;
+    align-content: right;
+    margin: 5px;
   }
   
   .hour {
