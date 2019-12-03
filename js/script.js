@@ -3,35 +3,50 @@
 // at turn of hour, start functions.
 // change colours of hour slots
 // check for save button pressed - then save content to local storage with date-time. 
-var currentDayEl=document.getElementById("currentDay");
+var currentDayEl = document.getElementById("currentDay");
 
 
+$(document).ready(function () {
+    showDate();
+    setCurrentHour();
+});
 
+function showDate() {
 
-function showDate(){
-    
-    // "formatDate" is the time to be formatted. 
-    
-    var test = document.createelement("li");
-    test.setAttribute("class", "list-item");
-    test.textContent = "testy westy";
-    currentDayEl.appendChild(test);
-
-
-    var liEl = document.createElement("li");
-        liEl.setAttribute("class", "list-item");
-        liEl.textContent = highScoresJSON[k].name + " - " + highScoresJSON[k].score;
-    var formatDate= 1399919400000;
-    var m=moment(formatDate).format('DD/MM/YYYY');
-    currentDayEl.innerHTML = m;
-
-    currentDayEl.textContent = "textContent";
-    currentDayEl.innerHTML = "innerHTML";
-    currentDayEl.innerText = "innerText";
-    $("#currentDay").text("currentDay");
-    
-    
+    var NowMoment = moment();
+    var currentDayEl = document.getElementById("currentDay");
+    currentDayEl.innerHTML = NowMoment.format('DD/MM/YYYY');
 
 }
 
-showDate;
+function setCurrentHour() {
+
+    var currentHour = moment().format("H"); // moment() returns the WHOLE time, date, location. with format("H") it only returns the hour section in 24hour times.
+    console.log(currentHour); // do I need to though? I should be able to just set it and compare it. Don't need specifically hour. 
+
+
+        $( ".time-block" ).each(function() {
+           var itemID = parseInt(this.id);
+           console.log(itemID);
+          if ( itemID == currentHour ) {
+            $(this).addClass("present");
+            console.log("present");
+          } else if ( itemID < currentHour){
+            $(this).addClass("past");
+            console.log("past");
+          }
+          else {
+              $(this).addClass("future");
+              console.log("future");
+          }
+          console.log("iteration");
+        });
+    
+
+
+
+
+
+
+
+}

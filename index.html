@@ -23,34 +23,34 @@
         <!-- Timeblocks go here -->
         <div class="jumbotron">
             <div class="row">
-                <div class="time=block" id="9am">9am</div>
+                <div class="time-block" id="9">9am</div>
             </div>
             <div class="row">
-                <div class="time=block" id="10am">10am</div>
+                <div class="time-block" id="10">10am</div>
             </div>
             <div class="row">
-                <div class="time=block" id="11am">11am</div>
+                <div class="time-block" id="11">11am</div>
             </div>
             <div class="row">
-                <div class="time=block" id="12pm">12pm</div>
+                <div class="time-block" id="12">12pm</div>
             </div>
             <div class="row">
-                <div class="time=block" id="1pm">1pm</div>
+                <div class="time-block" id="13">1pm</div>
             </div>
             <div class="row">
-                <div class="time=block" id="2pm">2pm</div>
+                <div class="time-block" id="14">2pm</div>
             </div>
             <div class="row">
-                <div class="time=block" id="3pm">3pm</div>
+                <div class="time-block" id="15">3pm</div>
             </div>
             <div class="row">
-                <div class="time=block" id="4pm">4pm</div>
+                <div class="time-block" id="16">4pm</div>
             </div>
 
 
         </div>
 
-        <!--  obtain date from system, and display at top  -->
+       
 
         <!-- display each time-hour down the page. Each element here, style them in css, modify them in js -->
 
@@ -62,37 +62,7 @@
     <script src="js/script.js"></script>
 
     <script>
-        function showDate() {
-
-            var NowMoment = moment();
-            var currentDayEl=document.getElementById("currentDay");
-            currentDayEl.innerHTML = NowMoment.format('DD/MM/YYYY');
-            
-            // check this if necessary https://stackoverflow.com/questions/807878/how-to-make-javascript-execute-after-page-load
-            // "formatDate" is the time to be formatted. 
-            // var currentDayEl=document.getElementById("currentDay");
-            // var test = document.createElement("li");
-            // test.setAttribute("class", "list-item");
-            // test.textContent = "testy westy";
-            // currentDayEl.appendChild(test); THIS WORKS
-
-
-
-
-            // var formatDate= 1399919400000;
-            // var m=moment(formatDate).format('DD/MM/YYYY');
-            // currentDayEl.innerHTML = m;  THIS WORKS, although the formatDate value needs to be dynamic
-
-            // currentDayEl.textContent = "textContent"; THIS WORKS
-            // currentDayEl.innerHTML = "innerHTML"; THIS WORKS
-            // currentDayEl.innerText = "innerText"; THIS WORKS
-            // $("#currentDay").text("currentDay"); THIS WORKS
-
-
-
-        }
-        // document.getElementById("currentDay").innerHTML = showDate(); // THIS WAS UNDEFINED
-        showDate();
+       
     </script>
 
 </body>
