@@ -75,7 +75,7 @@ function addText(blockClicked) {
        toDoList = JSON.stringify(daysActivities); // stringify array
        localStorage.setItem("hourText", toDoList); // store array
        $("#"+blockClicked).find(".inputbox").addClass("hide"); // hides input box
-       $("#"+blockClicked).find(".textarea").removeClass("hide"); // shows text area box
+       $("#"+blockClicked).find(".textarea").removeClass("hide"); // shows text
        displayActivities();
     });
 
@@ -87,11 +87,12 @@ function displayActivities(){
 
     // unstringify it
     daysActivities = JSON.parse(toDoList); 
+    console.log(daysActivities);
 
     // for loop to add the text to all the timeslots
     for (var i=0; i<daysActivities.length; i++){
         var rowID = i+9;
-        $("#"+rowID).find(".textarea").html=daysActivities[i]
+        $("#"+rowID).find(".textarea").text(daysActivities[i]);
         console.log(daysActivities[i]);
     }
 }
@@ -143,3 +144,5 @@ $(".time-block").click(function(event){
     // if( $(this).is("special")) is a if condition checking if the thing has the class special
 
   });
+
+  setInterval(setCurrentHour,60000);
