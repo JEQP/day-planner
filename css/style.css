@@ -4,13 +4,41 @@ body {
     line-height: 1;
   }
   
-  textarea{
+  .textarea{
     background: transparent;
+    font-size: x-small;
+    /* background-color: #fa0ab2; */
+    float: right;
     border: none;
     resize: none;
     color: #000000;
     border-left: 1px solid black;
-    padding: 10px;
+    padding-left: 1px;
+    /* padding: 10px; */
+    width: 80%;
+    height: 76px;
+    margin-top: -18px;
+    
+    
+  }
+
+  .inputbox{
+    background: transparent;
+    font-size: x-small;
+    /* background-color: #fa0ab2; */
+    float: right;
+    border: none;
+    resize: none;
+    color: #000000;
+    border-left: 1px solid black;
+    padding-left: 1px;
+    /* padding: 10px; */
+    width: 80%;
+    height: 76px;
+    margin-top: -18px;
+    rows: 4;
+    
+
   }
   
   .jumbotron {
@@ -44,7 +72,7 @@ body {
 
   .save-icon{
     height: 60px;
-    align-content: right;
+    align-content: flex-end;
     margin: 5px;
   }
   
@@ -82,3 +110,6 @@ body {
     transition: all .3s ease-in-out;
   }
   
+  .hide {
+    display: none;
+}
