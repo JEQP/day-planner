@@ -5,6 +5,6 @@ This web based app displays segments representing the work day, and allows users
 The current date is displayed at the top of the page. 
 
 Deployed link:
-https://jeqp.github.io/JPortfolio2/day-planner/index.html
+https://jeqp.github.io/day-planner/
 
-![Daily Scheduler](https://github.com/JEQP/JPortfolio2/blob/master/SchedulerColour.jpg)
+![Daily Scheduler](https://github.com/JEQP/day-planner/blob/master/SchedulerColour.jpg)
