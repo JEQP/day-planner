@@ -6,15 +6,15 @@ var tempDay = new Date(2019, 11, 31); // date object, year month day. (months ar
 
 $(document).ready(function () {
     showDate();
-    setCurrentHour();
-    displayActivities();
-    createStorageString();
+    // setCurrentHour();
+    // displayActivities();
+    // createStorageString();
 });
 
-function createStorageString() {
-    dailyHourText = "hourText" + currentDayEl.innerHTML;
-    console.log("dailyHourText: " + dailyHourText);
-}
+// function createStorageString() {
+//     dailyHourText = "hourText" + currentDayEl.innerHTML;
+//     console.log("dailyHourText: " + dailyHourText);
+// }
 
 function showDate() {
 
@@ -85,10 +85,7 @@ function addText(blockClicked) {
     $("#" + blockClicked).find(".inputbox").removeClass("hide");
 }
 
-// When save icon is clicked, gets hourText from storage, checks it exists, parses to an array. Changes relevant text based on user input, saves array, calls display function
-$(".save-icon").click(function (event) {
-
-    event.stopPropagation();
+function updateSaved(blockClicked) {
     dailyHourText = "hourText" + currentDayEl.innerHTML;
     var toDoList = localStorage.getItem(dailyHourText); // this is the string from the local storage
     //convert string toDoList into array daysActivities
@@ -99,8 +96,6 @@ $(".save-icon").click(function (event) {
         daysActivities = JSON.parse(toDoList);
     }
 
-    var blockClicked = $(this).parent().attr("id");
-
     var pos = blockClicked - 9; // converts id to array position
 
     daysActivities[pos] = $("#" + blockClicked).find(".inputbox").val(); // adds text in the box into the array
@@ -110,6 +105,28 @@ $(".save-icon").click(function (event) {
     $("#" + blockClicked).find(".inputbox").addClass("hide"); // hides input box
     $("#" + blockClicked).find(".textarea").removeClass("hide"); // shows text
     displayActivities();
+}
+
+// When save icon is clicked, gets hourText from storage, checks it exists, parses to an array. Changes relevant text based on user input, saves array, calls display function
+$(".save-icon").click(function (event) {
+
+    event.stopPropagation();
+
+    var blockClicked = $(this).parent().attr("id");
+    console.log("save icon clicked: " + blockClicked);
+    updateSaved(blockClicked);
+
+});
+
+$(".inputbox").on('keyup', function (event) {
+    event.stopPropagation();
+    if (event.keyCode === 13) {
+        var blockClicked = $(this).closest(".row").attr("id");
+        console.log("keyup: " + blockClicked);
+        updateSaved(blockClicked);
+
+
+    }
 });
 
 
@@ -129,10 +146,10 @@ function displayActivities() {
     }
     console.log(daysActivities);
 
-    // This should clear the days activities before adding new ones
-    for (var i=9; i<17; i++){
-        $("#"+i).find(".textarea").text("");
-    }
+    // This should clear the days activities before adding new ones // but it deletes them.
+    // for (var i=9; i<17; i++){
+    //     $("#"+i).find(".textarea").text("");
+    // }
 
     // for loop to add the text to all the timeslots
     for (var i = 0; i < daysActivities.length; i++) {
@@ -158,7 +175,7 @@ function newDay() {
             tempDay = moment().format('YYYY/MM/DD');
         }
     }
-else {
+    else {
         tempDay = moment().format('YYYY/MM/DD');
         return;
     }
