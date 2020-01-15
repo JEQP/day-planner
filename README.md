@@ -1,4 +1,4 @@
-# day-planner
+# Work Day Scheduler
 Daily Planner
 
 This web based app displays segments representing the work day, and allows users to enter and store activites for each hour. The current hour is coloured red, while hours that have passed are gray and hours in the future are green. The time blocks automatically change colour based on the current time. 
