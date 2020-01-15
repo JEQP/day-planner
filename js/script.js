@@ -35,12 +35,15 @@ function changeDate() {
 function setCurrentHour() {
 
     var currentHour = moment().format("H"); // moment() returns the WHOLE time, date, location. with format("H") it only returns the hour section in 24hour times.
-    console.log("current time: " + moment().format());
-    // console.log(currentHour); 
+    var dateNow = moment().format('MM/DD/YYYY');
+    var date1 = new Date(dateNow);
+    // This takes the entered date and changes the format, since only MM/DD/YYYY works with new Date().
+    var splitDate = currentDayEl.innerHTML.split("/");
+    var adjustedDate = splitDate[1]+"/"+splitDate[0]+"/"+splitDate[2];
+    var date2 = new Date(adjustedDate);
+ // This checks if the date is before or after the current date, and sets the class accordingly. 
+    if (date1 > date2) {
 
-    // sets the colour of the time blocks
-    // this should compare the current date to the day displayed, and colour boxes accordingly. 
-    if (moment().isAfter(currentDayEl.innerHTML, 'day')) {
         $(".time-block").each(function () {
             $(this).addClass("past");
             $(this).removeClass("present");
@@ -48,15 +51,18 @@ function setCurrentHour() {
         });
     }
 
-    else if (moment().isBefore(currentDayEl.innerHTML, 'day')) {
+    else if (date1 < date2) {
+
         $(".time-block").each(function () {
             $(this).addClass("future");
             $(this).removeClass("present");
             $(this).removeClass("past");
         });
     }
-
+// for the current date this should set the time.
     else {
+
+ 
         $(".time-block").each(function () {
             var itemID = parseInt($(this).parent().attr("id"));
 
@@ -135,7 +141,6 @@ function displayActivities() {
     // get toDoList from localstorage
     dailyHourText = "hourText" + currentDayEl.innerHTML;
     var toDoList = localStorage.getItem(dailyHourText);
-    console.log("toDoList: " + toDoList);
 
     // unstringify it
     if (toDoList === null) {
@@ -144,12 +149,9 @@ function displayActivities() {
     else {
         daysActivities = JSON.parse(toDoList);
     }
-    console.log(daysActivities);
 
-    // This should clear the days activities before adding new ones // but it deletes them.
-    // for (var i=9; i<17; i++){
-    //     $("#"+i).find(".textarea").text("");
-    // }
+
+
 
     // for loop to add the text to all the timeslots
     for (var i = 0; i < daysActivities.length; i++) {
@@ -161,7 +163,6 @@ function displayActivities() {
 
 $(".time-block").click(function (event) {
     event.stopPropagation();
-    console.log("Clicked " + $(this).parent().attr("id"));
     var blockClicked = $(this).parent().attr("id");
     addText(blockClicked);
 });
